@@ -9,7 +9,7 @@
 
 Thank you for applying to Corva! We'd like to see how you'd create APIs in the context of Corva's technologies
 
-## Api Creation
+## API Creation
 
 Using your framework of choice, create a performant NodeJS REST API. This API will users to add their favorite books to a database.
 
@@ -34,4 +34,4 @@ As a consumer of this API, I should be able to create new books, update books th
 
 ## Final Note
 
-The details of this challenge are left purposely vague so that we can see how you might approach these problems with minimal guidance. Whatever solutions you choose to implement, please write product ready code that is documented heavily. Please include a README that can we can use to run your project locally.
+The details of this challenge are left purposely vague so that we can see how you might approach these problems with minimal guidance. Whatever solutions you choose to implement, please write product ready code that is documented heavily. Please include a README that can we can use to run your project locally. The more we know about why you made your decisions, the better.
