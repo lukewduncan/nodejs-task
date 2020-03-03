@@ -3,6 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var cors = require('cors');
 
 // Database
 var config = require('./config/database');
@@ -19,10 +20,7 @@ app.use(cors());
 // Initialize Passport 
 app.use(passport.initialize());
 
-// Welcome response hitting index
-app.get('/', function(req, res){
-  res.send('Welcome. To get started, please use our REST API')
-});
+
 
 // Setup API routes
 var apiRouter = require('./routes/api')

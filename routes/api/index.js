@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var passport = require('passport');
-var config = require('../config/database');
-require('../config/passport')(passport);
+var config = require('../../config/database');
+require('../../config/passport')(passport);
 var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
-var User = require("../models/user");
-var Book = require("../models/book");
+var User = require("../../models/user");
+var Book = require("../../models/book");
 
 // api/signup - register to get account
 router.post("/signup", function (req, res) {
@@ -22,7 +22,7 @@ router.post("/signup", function (req, res) {
       if (err) {
         return res.json({ success: false, msg: 'Username is invalid. Please select another username.' });
       }
-      res.json({ success: true, msg: 'Your account has been created!' });
+      res.json({ success: true, msg: 'Your account has been created!', user: newUser });
     });
   }
 });
@@ -39,7 +39,14 @@ router.post('/signin', function (req, res) {
     if (!user) {
       res.status(401).send({ success: false, msg: 'Signin failed.' });
     } else {
-      // Return JWT
+      user.comparePassword(req.body.password, function (err, isMatch) {
+        if (isMatch && !err) {
+          var token = jwt.sign(user, config.secret);
+          res.json({ success: true, token: 'JWT ' + token });
+        } else {
+          res.status(401).send({ success: false, msg: 'Authentication failed.' });
+        }
+      });
     }
   });
 });

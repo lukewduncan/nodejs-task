@@ -1,12 +1,12 @@
-var router = require('express').Router();
 var mongoose = require('mongoose');
 var passport = require('passport');
-var config = require('../config/database');
-require('../config/passport')(passport);
+var config = require('../../config/database');
+require('../../config/passport')(passport);
 var express = require('express');
 var jwt = require('jsonwebtoken');
-var User = require("../models/user");
-var Book = require("../models/book");
+var router = express.Router();
+var User = require("../../models/user");
+var Book = require("../../models/book");
 
 // GET api/books
 router.get('/', passport.authenticate('jwt', { session: false }), function (req, res) {
