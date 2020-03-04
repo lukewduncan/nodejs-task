@@ -9,7 +9,7 @@ exports.signUp = async function(req, res) {
 
     var user = await userObject.save();
     return user;
-  } catch(e) {
+  } catch (error) {
     if (!req.body.username || !req.body.password) {
       throw Error("Please include both username and password");
     } else {
@@ -23,7 +23,7 @@ exports.signIn = async function(req, res) {
   try {
     var user = await User.findOne({ username: req.body.username })  
     return user; 
-  } catch(e) {
-    throw Error(e.message) 
+  } catch (error) {
+    throw Error(error.message) 
   }
 }

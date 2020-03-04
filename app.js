@@ -20,8 +20,6 @@ app.use(cors());
 // Initialize Passport 
 app.use(passport.initialize());
 
-
-
 // Setup API routes
 var apiRouter = require('./routes/api')
 app.use('/api', apiRouter);

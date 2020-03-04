@@ -17,6 +17,10 @@ var BookModel = new Schema({
   isbn: {
     type: Number,
     required: true
+  },
+  created_by: {
+    type: String,
+    required: true
   }
 });
 
