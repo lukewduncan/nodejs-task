@@ -22,7 +22,7 @@ router.post("/signup", function (req, res) {
       if (err) {
         return res.json({ success: false, msg: 'Username is invalid. Please select another username.' });
       }
-      res.json({ success: true, msg: 'Your account has been created!', user: newUser });
+      res.json({ success: true, msg: 'Your account has been created! Please sign in by using /api/signin', user: newUser });
     });
   }
 });
@@ -39,9 +39,9 @@ router.post('/signin', function (req, res) {
     if (!user) {
       res.status(401).send({ success: false, msg: 'Signin failed.' });
     } else {
-      user.comparePassword(req.body.password, function (err, isMatch) {
-        if (isMatch && !err) {
-          var token = jwt.sign(user, config.secret);
+      user.comparePassword(req.body.password, function (error, isMatch) {
+        if (isMatch && !error) {
+          var token = jwt.sign({ user }, config.secret);
           res.json({ success: true, token: 'JWT ' + token });
         } else {
           res.status(401).send({ success: false, msg: 'Authentication failed.' });
