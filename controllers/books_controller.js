@@ -14,13 +14,11 @@ exports.getAllBooks = async function(req, res) {
     var books = await BookService.getAllBooks(req);
     return res.status(200).json({ books: books, user: req.user })
   } catch (error) {
-    console.log(error);
     return res.status(400).json({ msg: error.message })
   }
 }
 
 exports.updateBook = async function(req, res) {
-  console.log(req.user);
   try {
     var updatedBook = await BookService.updateBook(req);
     return res.status(200).json({ data: updatedBook, msg: "Successfully updated book.", user_id: req.user.id})
