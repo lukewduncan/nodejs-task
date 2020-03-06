@@ -18,12 +18,19 @@ exports.signUp = async function(req, res) {
   } 
 }
 
-
 exports.signIn = async function(req, res) {
   try {
     var user = await User.findOne({ username: req.body.username })  
     return user; 
   } catch (error) {
     throw Error(error.message) 
+  }
+}
+
+exports.attachBookToUser = async function (req, res) {
+  try {
+    
+  } catch (error) {
+    
   }
 }

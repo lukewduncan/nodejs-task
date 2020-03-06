@@ -29,14 +29,7 @@ exports.updateBook = async function(req, res) {
 
 exports.createBook = async function(req, res) {
   try {
-    var user = req.user
     var book = await BookService.createBook(req);
-    
-    if(book && user) {
-      user.books.push(book);
-      user.save();
-    }
-    
     return res.status(200).json({ data: book, msg: "Successfully created book." })
   } catch (error) {
     return res.status(400).json({ msg: error.message })

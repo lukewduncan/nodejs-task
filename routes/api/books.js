@@ -6,16 +6,14 @@ var router = express.Router();
 var Book = require("../../models/book");
 var BooksController = require("../../controllers/books_controller");
 
-// GET api/books
+// api/books
 router.get('/', passport.authenticate('jwt', { session: false }), BooksController.getUserBooks);
-
-// // PUT api/books/:id
-// router.put('/:id', passport.authenticate('jwt', { session: false }), BooksController.updateBook);
-
-// GET api/books/all
-router.get('/all', passport.authenticate('jwt', { session: false }), BooksController.getAllBooks);
-
-// POST api/books
 router.post('/', passport.authenticate('jwt', { session: false }), BooksController.createBook);
+
+// api/books/:id
+router.put('/:id', passport.authenticate('jwt', { session: false }), BooksController.updateBook);
+
+// api/books/all
+router.get('/all', passport.authenticate('jwt', { session: false }), BooksController.getAllBooks);
 
 module.exports = router;

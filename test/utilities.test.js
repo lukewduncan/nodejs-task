@@ -1,14 +1,12 @@
 process.env.NODE_ENV = "test";
-
-var app = require("../app");
 var chai = require("chai");
-var chaiHttp = require("chai-http");
 
 const userCredentials = {
   username: "luke.will.duncan+" + Date.now() + "@gmail.com",
   password: '123123'
 }
 
+// Simulates user signup and then proceed to token
 exports.authenticateUser = (app) =>
   new Promise((resolve, reject) => {
     chai.request(app)
