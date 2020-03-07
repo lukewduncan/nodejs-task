@@ -23,7 +23,7 @@ exports.updateBook = async function(req) {
   try {
     var book = await Book.findById(req.params.id).exec();
 
-    if(req.user.admin || book.created_by == req.user.id) {
+    if(book.confirmOwnership(req.user)) {
       book.title = req.body.title;
       book.author = req.body.author;
       book.publisher = req.body.publisher;
@@ -39,7 +39,7 @@ exports.updateBook = async function(req) {
   }
 }
 
-exports.createBook = async function (req) {
+exports.createBook = async function(req) {
   try {
     var user = req.user;
     var bookObject = new Book({
@@ -57,6 +57,19 @@ exports.createBook = async function (req) {
     return book;
   } catch(error) {
     throw Error("Could not create book. Please try again");
+  }
+}
+
+exports.deleteBook = async function(req) {
+  try {
+    var book = await Book.findById(req.params.id).exec();
+
+    if(book.confirmOwnership(req.user)) {
+      book.remove();
+      return book;
+    }
+  } catch (error) {
+    throw Error(error);
   }
 }
 

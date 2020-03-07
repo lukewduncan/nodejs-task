@@ -118,4 +118,37 @@ describe("CRUD API - Books", function () {
         });
     });
   });
+
+  describe("DELETE requests", function () {
+    var book_id = null;
+
+    before((done) => {
+      var bookObject = new Book({
+        title: "DELETE REQUEST",
+        author: "Luke Duncan",
+        publisher: "publisher Luke",
+        isbn: 1111111111
+      });
+
+      chai.request(app)
+        .post('/api/books')
+        .set("Authorization", jwt)
+        .send(bookObject)
+        .then((res) => {
+          book_id = res.body.book._id;
+          return done();
+        });
+    })
+
+    it("DELETE /api/books - should get unauthorized", function () {
+      return chai.request(app)
+        .delete('/api/books/' + book_id)
+        .set("Authorization", jwt)
+        .then((res) => {
+          res.should.have.status(200);
+          res.body.should.have.keys('msg');
+          res.body.msg.should.equal("Succesfully deleted DELETE REQUEST book.")
+        });
+    })
+  });
 })

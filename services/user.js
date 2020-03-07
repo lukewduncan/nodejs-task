@@ -26,11 +26,3 @@ exports.signIn = async function(req, res) {
     throw Error(error.message) 
   }
 }
-
-exports.attachBookToUser = async function (req, res) {
-  try {
-    
-  } catch (error) {
-    
-  }
-}
