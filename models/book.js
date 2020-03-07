@@ -8,15 +8,12 @@ var BookModel = new Schema({
   },
   author: {
     type: String,
-    required: true
   },
   publisher: {
     type: String,
-    required: true
   },
   isbn: {
     type: Number,
-    required: true
   },
   created_by: {
     type: String,

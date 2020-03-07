@@ -21,22 +21,21 @@ exports.getAllBooks = async function() {
 
 exports.updateBook = async function(req) {
   try {
-    Book.findOne({ id: req.body.id}, function(error, book){
-      if(book.created_by == req.user.id) {
-        console.log("book belongs to user");
-        book.title = req.body.title;
-        book.author = req.body.author;
-        book.publisher = req.body.publisher;
-        book.isbn = req.body.isbn;
+    var book = await Book.findById(req.params.id).exec();
 
-        book.save();
-      } else {
-        console.log(book.created_by);
-        console.log(req.user.id);
-      }
-    })
+    if(req.user.admin || book.created_by == req.user.id) {
+      book.title = req.body.title;
+      book.author = req.body.author;
+      book.publisher = req.body.publisher;
+      book.isbn = req.body.isbn;
+
+      var book = book.save();
+      return book;
+    } else {
+      throw Error("You do not own this book #1.");
+    }
   } catch (error) {
-    throw Error("You do not own this book.")
+    throw Error("You do not own this book #2.");
   }
 }
 
@@ -48,7 +47,7 @@ exports.createBook = async function (req) {
       author: req.body.author,
       publisher: req.body.publisher,
       isbn: req.body.isbn,
-      created_by: req.user.id
+      created_by: user.id
     });
 
     var book = await bookObject.save();
