@@ -16,9 +16,11 @@ describe("CRUD API - Books", function () {
     testUtilities.authenticateUser(app)
       .then((accessToken) => {
         jwt = accessToken;
+        // delete all books before running tests
+        Book.deleteMany({}, err => console.log(err));
         return done();
-      })
-  })
+      });
+  });
   
   describe("GET requests", function() {
     it("GET /api/books/all - should get unauthorized", function () {
@@ -151,4 +153,4 @@ describe("CRUD API - Books", function () {
         });
     })
   });
-})
+});

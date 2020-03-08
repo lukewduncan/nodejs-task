@@ -128,8 +128,8 @@
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMWYyODU4MmUwOTQxYWE2MWI2YzciLCJ1c2VybmFtZSI6Imx1a2Uud2lsbC5kdW5jYW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkSHdCU3RTSS90aU50c2MwbzVBelhmZWM3UkZtL2M0MWJWLkgudGdvMFB3c0pLcVRjRmFhdHUiLCJfX3YiOjB9LCJpYXQiOjE1ODMzNTc3NDR9.nbaO4IYbWxyLwLF7EbWZNO7uU3w3S6BK8rTaA2rF-Mw'
             \
             --header 'Content-Type: application/x-www-form-urlencoded' \
-            --data-urlencode 'title=Telling Lies' \
-            --data-urlencode 'author=Amanda Hoang' \
+            --data-urlencode 'title=Post Book' \
+            --data-urlencode 'author=Luke Duncan' \
             --data-urlencode 'publisher=Puffin' \
             --data-urlencode 'isbn=3955452957497543'
           </code>
@@ -160,8 +160,8 @@
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMWJlMTRiOGQ2NTQwZDRlOGRjMTIiLCJ1c2VybmFtZSI6Imx1a2VAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkbHpaU2ZtSEZvekZCY2w3TTNoMHp0ZUJBRWR4OWJ0SnJsbUVld3pmRkhKc3JKeXNuTThoYnkiLCJfX3YiOjB9LCJpYXQiOjE1ODMzNTcyMzh9.iHVkhC9S2o-91In4vug35-DCdiF57LjogSydi0E_dtE'
             \
             --header 'Content-Type: application/x-www-form-urlencoded' \
-            --data-urlencode 'title=Booom222' \
-            --data-urlencode 'author=Amanda Hoang' \
+            --data-urlencode 'title=Test Book' \
+            --data-urlencode 'author=Luke Duncan' \
             --data-urlencode 'publisher=Puffin' \
             --data-urlencode 'isbn=3955452957497543'
           </code>
@@ -179,15 +179,11 @@
         <p>Example</p>
         <pre class="bg-dark text-white">
           <code>
-            curl --location --request PUT 'http://localhost:3000/api/books/5e601990382f9840b226b1f2' \
+            curl --location --request DELETE 'http://localhost:3000/api/books/5e601990382f9840b226b1f2' \
             --header 'Authorization: JWT
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMWJlMTRiOGQ2NTQwZDRlOGRjMTIiLCJ1c2VybmFtZSI6Imx1a2VAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkbHpaU2ZtSEZvekZCY2w3TTNoMHp0ZUJBRWR4OWJ0SnJsbUVld3pmRkhKc3JKeXNuTThoYnkiLCJfX3YiOjB9LCJpYXQiOjE1ODMzNTcyMzh9.iHVkhC9S2o-91In4vug35-DCdiF57LjogSydi0E_dtE'
             \
             --header 'Content-Type: application/x-www-form-urlencoded' \
-            --data-urlencode 'title=Booom222' \
-            --data-urlencode 'author=Amanda Hoang' \
-            --data-urlencode 'publisher=Puffin' \
-            --data-urlencode 'isbn=3955452957497543'
           </code>
         </pre>
       </div>

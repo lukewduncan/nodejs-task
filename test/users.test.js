@@ -3,12 +3,18 @@ var app = require("../app");
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var testUtilities = require('./utilities.test');
-var Book = require('../models/book');
+var User = require('../models/user');
 
 chai.use(chaiHttp);
 chai.should();
 
 describe("User", function () {
+
+  // Delete potential records in db before running tests
+  before((done) => {
+    User.deleteMany({}, err => console.log(err));
+    return done();
+  });
 
   describe("POST /api/signup", function () {
     it("should create account succesfully", function () {
