@@ -8,7 +8,7 @@ var UserController = require("../../controllers/users_controller");
 
 // api/signup - register to get account
 router.post("/signup", UserController.signUp);
-router.post('/token', UserController.signIn);
+router.post('/token', UserController.getToken);
 
 // Book Routes
 router.use('/books', require('./books'));

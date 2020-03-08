@@ -6,7 +6,8 @@ const userCredentials = {
   password: '123123'
 }
 
-// Simulates user signup and then proceed to token
+// Simulates user signup and then proceed to return token
+// Written using Promise instead of async due to multiple requests
 exports.authenticateUser = (app) =>
   new Promise((resolve, reject) => {
     chai.request(app)

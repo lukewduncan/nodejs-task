@@ -2,11 +2,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
+// For times sake: https://stackoverflow.com/a/9204568/3255845
+function validateEmail(email) {
+  var regex = /\S+@\S+\.\S+/;
+  return regex.test(email);
+}
+
 var UserModel = new Schema({
   username: {
     type: String,
     unique: true,
-    required: true
+    trim: true,
+    required: true,
+    lowercase: true,
+    validate: [validateEmail, 'Please make sure you are using a valid email address.'],
   },
   password: {
     type: String,

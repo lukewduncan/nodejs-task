@@ -6,23 +6,23 @@ var config = require('../config/database');
 exports.signUp = async function(req, res) {
   try {
     var user = await UserService.signUp(req, res);
-    return res.status(200).json({ data: user, msg: "Successfully created user. Now please sign in to receive your API Token"})
+    return res.status(200).json({ msg: "Successfully created user. Now please send a request to /token using your credentials to receive your API Token"})
   } catch (error) {
     return res.status(400).json({ msg: error.message })
   }
 }
 
-exports.signIn = async function(req, res) {
+exports.getToken = async function(req, res) {
   try {
-    var user = await UserService.signIn(req, res);
+    var user = await UserService.getToken(req, res);
     user.comparePassword(req.body.password, function(error, isMatch) {
       if (isMatch && !error) {
-        return res.status(200).json({ user: user, success: true, token: "JWT " + jwt.sign({ user }, config.secret), msg: "You signed in. Please use this token for further requests." })
+        return res.status(200).json({ token: "JWT " + jwt.sign({ user }, config.secret), msg: "You signed in. Please use this token for further requests." })
       } else {
-        return res.status(400).json({ success: false, msg: isMatch })
+        return res.status(400).json({ msg: isMatch })
       }
     });
   } catch (error) {
-    return res.status(400).json({ msg: error.message })
+    return res.status(400).json({ msg: "Receiving token failed. An error occured." })
   }
 }
