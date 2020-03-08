@@ -1,0 +1,198 @@
+<div class="homepage bg-primary">
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-md-8">
+        <img src="https://www.corva.ai/wp-content/themes/corva/framework/dist/images/corva-logo.png"
+          style="height: 50px;" />
+        <h1 class="mt-3">Welcome to the Corva Book API</h1>
+        <p>To get started, follow the API documentation below. Once signed up, you will need to request a JSON Web Token. You will need to use this token with every request you send to the API.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="api-routes mb-5">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-8">
+        <h2>Authentication & User</h2>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="signup">
+          <p><span class="badge badge-primary">POST</span> Sign Up - <small>/api/signup</small></p>
+          
+          <p>Parameters:</p>
+          <ul>
+            <li>username: Email for user </li>
+            <li>password: Password for user</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>Example</p>
+        <pre class="bg-dark text-white">
+          <code>
+          curl --location --request POST 'https://intense-beyond-20836.herokuapp.com/api/signup' \
+          --data-urlencode 'username=steve@applesauce.com' \
+          --data-urlencode 'password=123123'
+          </code>
+        </pre>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="signup">
+          <p><span class="badge badge-primary">POST</span> Token - <small>/api/token</small></p>
+    
+          <p>Parameters:</p>
+          <ul>
+            <li>username: Email for user </li>
+            <li>password: Password for user</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>Example</p>
+        <pre class="bg-dark text-white">
+              <code>
+              curl --location --request POST 'http://localhost:3000/api/token' \
+              --header 'Content-Type: application/x-www-form-urlencoded' \
+              --data-urlencode 'username=steve@applsauce.com' \
+              --data-urlencode 'password=123123'
+              </code>
+            </pre>
+      </div>
+    </div>
+
+
+    <div class="row mt-5">
+      <div class="col-md-8">
+        <h2>Books</h2>
+        <p>To make requests, you will need to use your JWT in the header of each request to the API. Please see the examples for reference.</p>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="signup">
+          <p><span class="badge badge-success">GET</span> Get All User Books - <small>/api/books</small></p>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>Example</p>
+        <pre class="bg-dark text-white">
+          <code>
+            curl --location --request GET 'http://localhost:3000/api/books/' \
+              --header 'Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMjQ5ODFiZDE4MTQzOWUxOWMxYmMiLCJ1c2VybmFtZSI6Imx1a2Uud2lsbC5kdW5jYW4rM0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRHMXFrQ2cxcks0VFFLTFNWT1ZGUkEuYUtNdDl3ck8zV1dWelFxdm1nVFVwd1lMdTBZUnRFRyIsIl9fdiI6MH0sImlhdCI6MTU4MzM1OTE2Nn0.F5VG2HIJSiSZtOP38PlSvs3LaikTzEtbdXvd_JKdtG8'
+          </code>
+        </pre>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="signup">
+          <p><span class="badge badge-success">GET</span> Get All Books - <small>/api/books/all</small></p>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>Example</p>
+        <pre class="bg-dark text-white">
+          <code>
+            curl --location --request GET 'http://localhost:3000/api/books/all' \
+              --header 'Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMjQ5ODFiZDE4MTQzOWUxOWMxYmMiLCJ1c2VybmFtZSI6Imx1a2Uud2lsbC5kdW5jYW4rM0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRHMXFrQ2cxcks0VFFLTFNWT1ZGUkEuYUtNdDl3ck8zV1dWelFxdm1nVFVwd1lMdTBZUnRFRyIsIl9fdiI6MH0sImlhdCI6MTU4MzM1OTE2Nn0.F5VG2HIJSiSZtOP38PlSvs3LaikTzEtbdXvd_JKdtG8'
+          </code>
+        </pre>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="signup">
+          <p><span class="badge badge-primary">POST</span> Create New Book - <small>/api/books</small></p>
+
+          <p>Parameters:</p>
+          <ul>
+            <li>title *required: Title of the book </li>
+            <li>author: The author of the book</li>
+            <li>publisher: The publisher of the book</li>
+            <li>isbn: The isbn number of the book</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>Example</p>
+        <pre class="bg-dark text-white">
+          <code>
+            curl --location --request POST 'http://localhost:3000/api/books' \
+            --header 'Authorization: JWT
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMWYyODU4MmUwOTQxYWE2MWI2YzciLCJ1c2VybmFtZSI6Imx1a2Uud2lsbC5kdW5jYW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkSHdCU3RTSS90aU50c2MwbzVBelhmZWM3UkZtL2M0MWJWLkgudGdvMFB3c0pLcVRjRmFhdHUiLCJfX3YiOjB9LCJpYXQiOjE1ODMzNTc3NDR9.nbaO4IYbWxyLwLF7EbWZNO7uU3w3S6BK8rTaA2rF-Mw'
+            \
+            --header 'Content-Type: application/x-www-form-urlencoded' \
+            --data-urlencode 'title=Telling Lies' \
+            --data-urlencode 'author=Amanda Hoang' \
+            --data-urlencode 'publisher=Puffin' \
+            --data-urlencode 'isbn=3955452957497543'
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="signup">
+          <p><span class="badge badge-warning">PUT</span> Update Book - <small>/api/books/:id</small></p>
+    
+          <p>Parameters:</p>
+          <ul>
+            <li>title *required: Title of the book </li>
+            <li>author: The author of the book</li>
+            <li>publisher: The publisher of the book</li>
+            <li>isbn: The isbn number of the book</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>Example</p>
+        <pre class="bg-dark text-white">
+          <code>
+            curl --location --request PUT 'http://localhost:3000/api/books/5e601990382f9840b226b1f2' \
+            --header 'Authorization: JWT
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMWJlMTRiOGQ2NTQwZDRlOGRjMTIiLCJ1c2VybmFtZSI6Imx1a2VAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkbHpaU2ZtSEZvekZCY2w3TTNoMHp0ZUJBRWR4OWJ0SnJsbUVld3pmRkhKc3JKeXNuTThoYnkiLCJfX3YiOjB9LCJpYXQiOjE1ODMzNTcyMzh9.iHVkhC9S2o-91In4vug35-DCdiF57LjogSydi0E_dtE'
+            \
+            --header 'Content-Type: application/x-www-form-urlencoded' \
+            --data-urlencode 'title=Booom222' \
+            --data-urlencode 'author=Amanda Hoang' \
+            --data-urlencode 'publisher=Puffin' \
+            --data-urlencode 'isbn=3955452957497543'
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div class="signup">
+          <p><span class="badge badge-danger">DELETE</span> Delete Book - <small>/api/books/:id</small></p>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>Example</p>
+        <pre class="bg-dark text-white">
+          <code>
+            curl --location --request PUT 'http://localhost:3000/api/books/5e601990382f9840b226b1f2' \
+            --header 'Authorization: JWT
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMWJlMTRiOGQ2NTQwZDRlOGRjMTIiLCJ1c2VybmFtZSI6Imx1a2VAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkbHpaU2ZtSEZvekZCY2w3TTNoMHp0ZUJBRWR4OWJ0SnJsbUVld3pmRkhKc3JKeXNuTThoYnkiLCJfX3YiOjB9LCJpYXQiOjE1ODMzNTcyMzh9.iHVkhC9S2o-91In4vug35-DCdiF57LjogSydi0E_dtE'
+            \
+            --header 'Content-Type: application/x-www-form-urlencoded' \
+            --data-urlencode 'title=Booom222' \
+            --data-urlencode 'author=Amanda Hoang' \
+            --data-urlencode 'publisher=Puffin' \
+            --data-urlencode 'isbn=3955452957497543'
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+

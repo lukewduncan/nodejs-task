@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var cors = require('cors');
 var rateLimit = require('express-rate-limit');
+var expressLayouts = require("express-ejs-layouts")
 
 var app = express();
 
@@ -31,8 +32,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set("view options", { layout: "views/layout.ejs" });
+app.set('view engine', 'ejs');
+app.set("etag", false);
+app.use(expressLayouts); // add this use()
+
 // Initialize Passport 
 app.use(passport.initialize());
+
+var indexRouter = require('./routes/index')
+app.use("/", indexRouter);
 
 // Setup API routes
 var apiRouter = require('./routes/api')
