@@ -1,3 +1,43 @@
+# Corva - Book API
+Please see https://intense-beyond-20836.herokuapp.com/ for instructions on how to use the API. The URL is also what you will use to make requests.
+
+When I first started out on this project, I decided to use Express. It has been a few years since I have used NodeJS and Express in a production environment, but my thoughts were that I have enough working knowledge to know when I was heading in the right direction.
+
+Below, you'll find my explanations about the decisions that I made to build the application.
+
+##### Object modelling and MongoDB
+I thought it would be best to use Mongoose to model the data. This is because I knew the data I had to collect (Users, Books), and also because Mongoose was built on top of MongoDB native web driver. It also allowed me to build the application quicker because I had working knowledge of Mongoose.
+
+If the goal of the project was to use MongoDB native web driver directly, I apologize. I can see the need to utilize MongoDB native web driver for large datasets, but again - in situations of a simple CRUD app, object modelling made sense to me.
+
+I purposely structured the application with the use of services. If things had to be changed to use the MongoDB native web driver, then it would be easy to refactor our CRUD services.
+
+##### Authentication
+From the project instructions, I knew that a user had to have the ability to signup, and then be authenticated when making requests. Having prior Express experience, I used PassportJS. 
+
+The User endpoints simply signup `POST /api/signup` and retrive the JWT Token `POST /api/token` to make requests in the future. Both endpoints require `username` and `password`. In order to secure our app further, I utilize Bcrypt to hash the password upon initial save of the user.
+
+All routes under `/api/books` are utilizing `passport.authenticate()` in the route middleware. This is to validate the JWT token so we can figure out which user is making the request.
+
+##### Application Structure
+I am more comfortable in a Ruby on Rails environment. When configuring the project, I wanted to setup Express to mimic Rails and typical MVC structure. To do that, I setup:
+
+  * Routes
+    * All of our routes are setup by controller action. E.g. `GET /api/books/all` utilizes the `BooksController.getAllBooks` controller function.
+  * Controllers
+    * This handles the actual request and response object. In the controller functions themselves, a service function is run, then we return the response from those services.
+  * Services
+    * Services encapsulate all of the information needed to execute a method or process. This is where the logic goes to complete the Controller action so that we can keep our controllers "skinny". By encapsulating all of our methods, although it wasn't done in this app, it would be easy to setup some sort of background processor for these services so we can choose our execution lifecycle (which functions are more important).
+
+### Difficulties
+Below are some problems I ran into while building the application.
+* Choosing a pattern to use. Whether that be Promise based, or Async/Await.
+* Switching from using Ruby to Javascript on the backend took a few days to get used too. Mimicking the application structure of an MVC made things easier.
+* The asynchronous nature of NodeJS. Using the Async/Await pattern made things a little easier to read/write.
+* The simple task of setting up Express to utilize layouts so I could write the documentation on `/`
+
+------------------
+
 # Task Delivery
 
 * Please don't fork, branch or create a pull request with this repository. 
