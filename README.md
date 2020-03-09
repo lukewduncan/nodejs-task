@@ -18,7 +18,7 @@ When I first started out on this project, I decided to use Express. It has been 
 Below, you'll find my explanations about the decisions that I made to build the application.
 
 #### Object modelling and MongoDB
-I thought it would be best to use Mongoose in order to model the data. This is because the data between User and Books was relational. It also allowed me to build the application quicker, because I had working knowledge. 
+I thought it would be best to use Mongoose in order to model the data. This is because the data between User and Books was relational. It also allowed me to build the application quicker, because I had working knowledge. I didn't know this when beginning the project, but Mongoose is built on top of the MongoDB native web driver.
 
 If the goal of the project was to use MongoDB native web driver directly, I apologize. I can see the need to utilize MongoDB native web driver for large datasets, but again - in situations of a simple CRUD app, object modelling made sense to me.
 
