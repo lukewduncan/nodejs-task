@@ -32,9 +32,6 @@ var UserModel = new Schema({
 
 UserModel.methods.comparePassword = function (password, callback) {
   var user = this;
-  console.log(user);
-  console.log(password);
-  console.log(user.password);
   bcrypt.compare(password, user.password, function (error, isMatch) {
     if (error) {
       console.log(error);

@@ -67,6 +67,8 @@ exports.deleteBook = async function(req) {
     if(book.confirmOwnership(req.user)) {
       book.remove();
       return book;
+    } else {
+      throw Error("You do not have access to this book");
     }
   } catch (error) {
     throw Error(error);
