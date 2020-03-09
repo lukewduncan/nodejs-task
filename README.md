@@ -6,18 +6,18 @@ When I first started out on this project, I decided to use Express. It has been 
 Below, you'll find my explanations about the decisions that I made to build the application.
 
 #### Object modelling and MongoDB
-I thought it would be best to use Mongoose to model the data. This is because I knew the data I had to collect (Users, Books), and also because Mongoose was built on top of MongoDB native web driver. It also allowed me to build the application quicker because I had working knowledge of Mongoose.
+I thought it would be best to use Mongoose in order to model the data. This is because the data between User and Books was relational. It also allowed me to build the application quicker, because I had working knowledge. 
 
 If the goal of the project was to use MongoDB native web driver directly, I apologize. I can see the need to utilize MongoDB native web driver for large datasets, but again - in situations of a simple CRUD app, object modelling made sense to me.
 
-I purposely structured the application with the use of services. If things had to be changed to use the MongoDB native web driver, then it would be easy to refactor our CRUD services.
+I purposely structured the application with the use of services. If things had to be changed to use the MongoDB native web driver, it would be easy to refactor our CRUD services.
 
-As far as the actual database, I implemented MongoDB Atlas just to get my application up and running quickly. I did not have MongoDB installed locally and attaching a URL string was much easier for me.
+As far as the actual database, I implemented MongoDB Atlas to get my application up and running quickly. I did not have MongoDB installed locally and attaching a URL string to Mongoose was much easier for me.
 
 #### Authentication
-From the project instructions, I knew that a user had to have the ability to signup, and then be authenticated when making requests. Having prior Express experience, I used PassportJS. 
+From the project instructions, I knew that a user had to have the ability to signup, and then be authenticated when making requests. Having prior Express experience, I used PassportJS and JSON Web Tokens. 
 
-The User endpoints simply signup `POST /api/signup` and retrive the JWT Token `POST /api/token` to make requests in the future. Both endpoints require `username` and `password`. In order to secure our app further, I utilize Bcrypt to hash the password upon initial save of the user.
+The User endpoints simply signup `POST /api/signup` and retrieve the JWT Token `POST /api/token` to make requests in the future. Both endpoints require `username` and `password`. In order to secure our app further, I utilize Bcrypt to hash the password upon initial save of the user.
 
 All routes under `/api/books` are utilizing `passport.authenticate()` in the route middleware. This is to validate the JWT token so we can figure out which user is making the request.
 
@@ -31,6 +31,8 @@ I am more comfortable in a Ruby on Rails environment. When configuring the proje
   * Services
     * Services encapsulate all of the information needed to execute a method or process. This is where the logic goes to complete the Controller action so that we can keep our controllers "skinny". By encapsulating all of our methods, although it wasn't done in this app, it would be easy to setup some sort of background processor for these services so we can choose our execution lifecycle (which functions are more important).
 
+On top of this structure, testing was also implemented using Mocha, Chai and Chai-HTTP for requests. The test suite covers all the basic CRUD actions.
+
 ### Extras Implemented
 Here are some of the extras I implemented according to the project spec
 * Users created as administrators. I simply attached an `admin` attribute on the User model. Most of the admin logic lays behind the Book model, so I implemented a `confirmOwnership` method on Book to see who was making the requests on certain records.
@@ -41,7 +43,7 @@ Here are some of the extras I implemented according to the project spec
 ### Difficulties
 Below are some problems I ran into while building the application.
 * Choosing a pattern to use. Whether that be Promise based, or Async/Await.
-* Switching from using Ruby to Javascript on the backend took a few days to get used too. Mimicking the application structure of an MVC made things easier.
+* Switching from using Ruby to Javascript on the backend took a few days to get used too.
 * The asynchronous nature of NodeJS. Using the Async/Await pattern made things a little easier to read/write.
 * The simple task of setting up Express to utilize layouts so I could write the documentation on `/`
 
