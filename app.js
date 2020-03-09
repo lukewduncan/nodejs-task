@@ -24,6 +24,8 @@ var apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100
 });
+// This is for Heroku rate limiting
+app.set('trust proxy', 1);
 app.use("/api/", apiLimiter);
 
 app.use(logger('dev'));
@@ -49,4 +51,4 @@ app.use("/", indexRouter);
 var apiRouter = require('./routes/api')
 app.use('/api', apiRouter);
 
-module.exports = app;
+module.exports = serverless(app);
