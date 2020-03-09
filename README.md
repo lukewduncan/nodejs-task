@@ -1,6 +1,18 @@
 # Corva - Book API
 Please see https://intense-beyond-20836.herokuapp.com/ for instructions on how to use the API. The URL is also what you will use to make requests.
 
+Here is the Github repository: https://github.com/lukewduncan/nodejs-task
+
+To run this project locally, follow those commands below: 
+
+```
+  git clone https://github.com/lukewduncan/nodejs-task.git
+  npm install
+  npm start
+```
+
+You will also need to change the database URL strings if you would like your own database, which are found in `config/database.js`.
+
 When I first started out on this project, I decided to use Express. It has been a few years since I have used NodeJS and Express in a production environment, but my thoughts were that I have enough working knowledge to know when I was heading in the right direction.
 
 Below, you'll find my explanations about the decisions that I made to build the application.
