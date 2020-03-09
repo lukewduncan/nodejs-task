@@ -19,7 +19,7 @@ exports.getToken = async function(req, res) {
       if (isMatch && !error) {
         return res.status(200).json({ token: "JWT " + jwt.sign({ user }, config.secret), msg: "You signed in. Please use this token for further requests." })
       } else {
-        return res.status(400).json({ msg: "Could not create a token at this time. Please check your username and password."})
+        return res.status(400).json({ msg: error})
       }
     });
   } catch (error) {
