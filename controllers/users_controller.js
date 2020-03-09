@@ -8,7 +8,7 @@ exports.signUp = async function(req, res) {
     var user = await UserService.signUp(req, res);
     return res.status(200).json({ msg: "Successfully created user. Now please send a request to /token using your credentials to receive your API Token"})
   } catch (error) {
-    return res.status(400).json({ msg: error.message })
+    return res.status(400).json({ msg: "There was an error signing up your account. Please make sure you are using a valid email and password." })
   }
 }
 
