@@ -1,10 +1,16 @@
 var User = require('../models/user');
+var bcrypt = require('bcrypt');
 
 exports.signUp = async function(req, res) {
   try {
+     var saltRounds = 10;
+
+     const salt = bcrypt.genSaltSync(saltRounds);
+     const hash = bcrypt.hashSync(req.body.password, salt);
+
     var userObject = new User({
       username: req.body.username,
-      password: req.body.password
+      password: hash
     });
 
     var user = await userObject.save();

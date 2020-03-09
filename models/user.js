@@ -30,26 +30,14 @@ var UserModel = new Schema({
   }]
 });
 
-UserModel.pre('save', function (next, done) {
-  var user = this;
-  var saltRounds = 10;
-
-  bcrypt.hash(user.password, saltRounds, function (error, hash) {
-    if (error) {
-      return next(error);
-    }
-
-    user.password = hash;
-    user.save(function(error, user) {
-      next();
-    });
-  });
-});
-
 UserModel.methods.comparePassword = function (password, callback) {
   var user = this;
+  console.log(user);
+  console.log(password);
+  console.log(user.password);
   bcrypt.compare(password, user.password, function (error, isMatch) {
     if (error) {
+      console.log(error);
       return callback(error);
     }
     callback(null, isMatch);
