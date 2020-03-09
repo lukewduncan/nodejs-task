@@ -39,6 +39,15 @@
           --data-urlencode 'password=123123'
           </code>
         </pre>
+
+        Response Example
+        <pre class="bg-dark text-white">
+          <code>
+            { 
+              "msg": "Successfully created user. Now please send a request to /token using your credentials to receive your API Token"
+            }
+          </code>
+        </pre>
       </div>
     </div>
     <div class="row mt-5">
@@ -56,13 +65,23 @@
       <div class="col-md-8">
         <p>Example</p>
         <pre class="bg-dark text-white">
-              <code>
-              curl --location --request POST 'http://localhost:3000/api/token' \
-              --header 'Content-Type: application/x-www-form-urlencoded' \
-              --data-urlencode 'username=steve@applsauce.com' \
-              --data-urlencode 'password=123123'
-              </code>
-            </pre>
+          <code>
+          curl --location --request POST 'http://localhost:3000/api/token' \
+          --header 'Content-Type: application/x-www-form-urlencoded' \
+          --data-urlencode 'username=steve@applsauce.com' \
+          --data-urlencode 'password=123123'
+          </code>
+        </pre>
+
+        Response Example
+        <pre class="bg-dark text-white">
+          <code>
+            { 
+              "token": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTY2NDE2MWFiMDQxNzAwMTdhMGZkNTgiLCJ1c2VybmFtZSI6Imx1a2UrdGVzdEBsdWtlLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGxCUkU4OW8wRk9Uai9CbVllSEpWMy5TZlY0alNsVVZReHgzVzRkTnVUNXFLN014NWtRLkt1IiwiX192IjowfSwiaWF0IjoxNTgzNzU5ODMyfQ.YXoy8iivUGRr-DUH8JFYAUQkHdcPpsqEptWWghl_MGY",
+              "msg": "You signed in. Please use this token for further requests."
+            }
+          </code>
+        </pre>
       </div>
     </div>
 
@@ -87,6 +106,25 @@
               --header 'Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMjQ5ODFiZDE4MTQzOWUxOWMxYmMiLCJ1c2VybmFtZSI6Imx1a2Uud2lsbC5kdW5jYW4rM0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRHMXFrQ2cxcks0VFFLTFNWT1ZGUkEuYUtNdDl3ck8zV1dWelFxdm1nVFVwd1lMdTBZUnRFRyIsIl9fdiI6MH0sImlhdCI6MTU4MzM1OTE2Nn0.F5VG2HIJSiSZtOP38PlSvs3LaikTzEtbdXvd_JKdtG8'
           </code>
         </pre>
+        
+        Response Example
+        <pre class="bg-dark text-white">
+          <code>
+            {
+              "books": [
+                {
+                  "_id": "5e65c9efe60c410017825fd2",
+                  "title": "My Book",
+                  "created_by": "5e65c9b8e60c410017825fd1",
+                  "__v": 0,
+                  "isbn": 999,
+                  "publisher": "My Publisher"
+                  "author": "Luke Duncan"
+                }
+              ]
+            }
+          </code>
+        </pre>
       </div>
     </div>
     <div class="row mt-3">
@@ -103,8 +141,28 @@
               --header 'Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMjQ5ODFiZDE4MTQzOWUxOWMxYmMiLCJ1c2VybmFtZSI6Imx1a2Uud2lsbC5kdW5jYW4rM0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRHMXFrQ2cxcks0VFFLTFNWT1ZGUkEuYUtNdDl3ck8zV1dWelFxdm1nVFVwd1lMdTBZUnRFRyIsIl9fdiI6MH0sImlhdCI6MTU4MzM1OTE2Nn0.F5VG2HIJSiSZtOP38PlSvs3LaikTzEtbdXvd_JKdtG8'
           </code>
         </pre>
+
+        Response Example
+        <pre class="bg-dark text-white">
+          <code>
+            {
+              "books": [
+                {
+                  "_id": "5e65c9efe60c410017825fd2",
+                  "title": "My Book",
+                  "created_by": "5e65c9b8e60c410017825fd1",
+                  "__v": 0,
+                  "isbn": 999,
+                  "publisher": "My Publisher"
+                  "author": "Luke Duncan"
+                }
+              ]
+            }
+          </code>
+        </pre>
       </div>
     </div>
+
     <div class="row mt-3">
       <div class="col-md-4">
         <div class="signup">
@@ -134,6 +192,24 @@
             --data-urlencode 'isbn=3955452957497543'
           </code>
         </pre>
+
+        Response Example
+        <pre class="bg-dark text-white">
+          <code>
+            {
+              "book": {
+                "_id": "5e6642e4ab04170017a0fd59",
+                "title": "Post Book",
+                "created_by": "5e65c9b8e60c410017825fd1",
+                "isbn": "3955452957497543",
+                "author": "Luke Duncan",
+                "publisher": "Puffin"
+                "__v": 0
+              },
+              "msg": "Successfully created book."
+            }
+          </code>
+        </pre>
       </div>
     </div>
 
@@ -155,15 +231,30 @@
         <p>Example</p>
         <pre class="bg-dark text-white">
           <code>
-            curl --location --request PUT 'http://localhost:3000/api/books/5e601990382f9840b226b1f2' \
+            curl --location --request PUT 'http://localhost:3000/api/books/5e6642e4ab04170017a0fd59' \
             --header 'Authorization: JWT
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImFkbWluIjpmYWxzZSwiYm9va3MiOltdLCJfaWQiOiI1ZTYwMWJlMTRiOGQ2NTQwZDRlOGRjMTIiLCJ1c2VybmFtZSI6Imx1a2VAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkbHpaU2ZtSEZvekZCY2w3TTNoMHp0ZUJBRWR4OWJ0SnJsbUVld3pmRkhKc3JKeXNuTThoYnkiLCJfX3YiOjB9LCJpYXQiOjE1ODMzNTcyMzh9.iHVkhC9S2o-91In4vug35-DCdiF57LjogSydi0E_dtE'
             \
             --header 'Content-Type: application/x-www-form-urlencoded' \
             --data-urlencode 'title=Test Book' \
-            --data-urlencode 'author=Luke Duncan' \
-            --data-urlencode 'publisher=Puffin' \
-            --data-urlencode 'isbn=3955452957497543'
+          </code>
+        </pre>
+
+        Response Example
+        <pre class="bg-dark text-white">
+          <code>
+            {
+              "book": {
+                "_id": "5e6642e4ab04170017a0fd59",
+                "title": "Test Book",
+                "created_by": "5e65c9b8e60c410017825fd1",
+                "isbn": "3955452957497543",
+                "author": "Luke Duncan",
+                "publisher": "Puffin"
+                "__v": 0
+              },
+              "msg": "Successfully created book."
+            }
           </code>
         </pre>
       </div>
@@ -186,9 +277,20 @@
             --header 'Content-Type: application/x-www-form-urlencoded' \
           </code>
         </pre>
+
+        Response Example
+        <pre class="bg-dark text-white">
+          <code>
+            {
+              "msg": "Succesfully deleted My Book Updated book."
+            }
+          </code>
+        </pre>
       </div>
     </div>
   </div>
 </div>
+
+
 
 

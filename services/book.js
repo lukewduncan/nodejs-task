@@ -24,11 +24,7 @@ exports.updateBook = async function(req) {
     var book = await Book.findById(req.params.id).exec();
 
     if(book.confirmOwnership(req.user)) {
-      book.title = req.body.title;
-      book.author = req.body.author;
-      book.publisher = req.body.publisher;
-      book.isbn = req.body.isbn;
-
+      book.set(req.body);
       var book = book.save();
       return book;
     } else {
